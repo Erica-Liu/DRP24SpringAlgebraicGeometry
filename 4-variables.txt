@@ -1,0 +1,29 @@
+import itertools
+
+R.<a, b, c, d, e, f, g, h, i0, j0, k, l, m, n, o, p> = QQ['a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p']
+
+board = matrix(R, [[a, b, c, d], [e, f, g, h], [i0, j0, k, l], [m, n, o, p]])
+
+gens = [d+i, e+i, g+1, j0-i, l-1, m-1]
+
+def constraints(x, y):
+    return (x+y)*(x^2+y^2)
+
+for row in board:
+    for x, y in itertools.combinations(row, 2):
+        gens.append(constraints(x, y))
+
+for col in board.transpose():
+    for x, y in itertools.combinations(col, 2):
+        gens.append(constraints(x, y))
+
+for row in (0, 2):
+    for col in (0, 2):
+        for x, y in itertools.combinations(itertools.chain.from_iterable(board.submatrix(row, col, 2, 2)), 2):
+            gens.append(constraints(x,y))
+
+
+I = ideal(list(set(gens)))
+B = I.groebner_basis()
+
+print(B)

@@ -1,0 +1,115 @@
+import itertools
+UCF = CyclotomicField(9); UCF
+R = UCF['x11, x12, x13, x14, x15, x16, x17, x18, x19, x21, x22, x23, x24, x25, x26, x27, x28, x29, x31, x32, x33, x34, x35, x36, x37, x38, x39, x41, x42, x43, x44, x45, x46, x47, x48, x49, x51, x52, x53, x54, x55, x56, x57, x58, x59, x61, x62, x63, x64, x65, x66, x67, x68, x69, x71, x72, x73, x74, x75, x76, x77, x78, x79, x81, x82, x83, x84, x85, x86, x87, x88, x89, x91, x92, x93, x94, x95, x96, x97, x98, x99']
+(x11, x12, x13, x14, x15, x16, x17, x18, x19, 
+    x21, x22, x23, x24, x25, x26, x27, x28, x29,
+    x31, x32, x33, x34, x35, x36, x37, x38, x39,
+    x41, x42, x43, x44, x45, x46, x47, x48, x49,
+    x51, x52, x53, x54, x55, x56, x57, x58, x59,
+    x61, x62, x63, x64, x65, x66, x67, x68, x69,
+    x71, x72, x73, x74, x75, x76, x77, x78, x79,
+    x81, x82, x83, x84, x85, x86, x87, x88, x89,
+    x91, x92, x93, x94, x95, x96, x97, x98, x99) = R.gens()
+
+board = matrix(R, [[x11, x12, x13, x14, x15, x16, x17, x18, x19], 
+                   [x21, x22, x23, x24, x25, x26, x27, x28, x29], 
+                   [x31, x32, x33, x34, x35, x36, x37, x38, x39], 
+                   [x41, x42, x43, x44, x45, x46, x47, x48, x49], 
+                   [x51, x52, x53, x54, x55, x56, x57, x58, x59], 
+                   [x61, x62, x63, x64, x65, x66, x67, x68, x69], 
+                   [x71, x72, x73, x74, x75, x76, x77, x78, x79], 
+                   [x81, x82, x83, x84, x85, x86, x87, x88, x89], 
+                   [x91, x92, x93, x94, x95, x96, x97, x98, x99]])
+
+def root_to_val(z):
+    val = -1
+    for  k in range (9):
+        if z == UCF.gen()^k:
+            val = k
+    if val == 0:
+        val = 9
+    return val
+
+def val_to_root(x):
+    return (UCF.gen())^x 
+    
+def constraints(x, y):
+    sum = 0
+    for k in range(9):
+        sum += x^k*y^(8-k)
+    return sum
+
+print('Starting Sudoku baord:')
+sudoku = [5, 3, 0, 0, 7, 0, 0, 0, 0, 
+        6, 0, 0, 1, 9, 5, 0, 0, 0, 
+        0, 9, 8, 0, 0, 0, 0, 6, 0, 
+        8, 0, 0, 0, 6, 0, 0, 0, 3, 
+        4, 0, 0, 8, 0, 3, 0, 0, 1, 
+        7, 0, 0, 0, 2, 0, 0, 0, 6, 
+        0, 6, 0, 0, 0, 0, 2, 8, 0, 
+        0, 0, 0, 4, 1, 9, 0, 0, 5, 
+        0, 0, 0, 0, 8, 0, 0, 7, 9]
+
+for r in range(9):
+    for c in range(9):
+        val = sudoku[r*9+c]
+        if val == 0:
+            print('-', end=' ')
+        else:
+            print(val, end=' ')
+    print()
+
+gens = []
+for item in range(81):
+    if sudoku[item] != 0:
+        gens.append(board[item // 9][item % 9] - val_to_root(sudoku[item]))
+
+for row in range (9):
+    for col in range (9):
+        gens.append(board[row][col]^9-1)
+    
+for row in board:
+    for x, y in itertools.combinations(row, 2):
+        gens.append(constraints(x, y))
+
+
+for col in board.transpose():
+    for x, y in itertools.combinations(col, 2):
+        gens.append(constraints(x, y))
+
+for row in (0, 3, 6):
+    for col in (0, 3, 6):
+        for x, y in itertools.combinations(itertools.chain.from_iterable(board.submatrix(row, col, 3, 3)), 2):
+            gens.append(constraints(x,y))
+           
+        
+X= Set(gens)
+print('Number of generators: ' + str(X.cardinality()))
+
+I = R.ideal(list(X))
+print('Ideal construction finished')
+B = I.groebner_basis()
+print('Groebner basis calculation finished: ', end='')
+print(B)
+
+print('Solved sudoku board:')
+
+def print_num_board():
+    for r in range(9):
+        for c in range(9):
+            root = B[r*9+c] - board[r][c]
+            val = root_to_val(-root)
+            print(val, end=' ')
+        print()
+    
+def print_roots_board():
+    for r in range(9):
+        for c in range(9):
+            root = B[r*9+c]
+            print(root, end='   ')
+        print()
+print('in polynomial equations:')
+print_roots_board()
+print('in sudoku numbers:')
+print_num_board()
+print(':)')
