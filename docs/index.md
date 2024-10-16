@@ -21,15 +21,20 @@ We wanted to investigate how we could relate Geometry and Algebra, and what that
 ### The Theoretical Concepts
 <p style="text-align: center"><img align="" width="300" height="" src="https://hackmd.io/_uploads/B1LaYdUY0.jpg"> 
 
+
 We explored how affine varieties can be used to describe a set of points modeling a geometric object, and how these points can be described by polynomial ideal. We looked at the properties of ideals, Gröbner bases and how they can be used to generate polynomial ideals. 
+
 
 ### Our application: Sudoku puzzles!
 ![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png)
 While reading the paper above, we wanted to know if the methods used in the paper to encode Sudoku puzzles with polynomials to count them could be used to actually solve the puzzles themselves. It turns out that a Gröbner basis can solve them, even in a few different methods! 
 
+
 ## Useful Definitions
 
+
 The following provides the necessary definitions we used in this project.
+
 
 ### Polynomial
 
