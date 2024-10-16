@@ -27,6 +27,8 @@ We explored how affine varieties can be used to describe a set of points modelin
 
 ### Our application: Sudoku puzzles!
 ![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png)
+
+
 While reading the paper above, we wanted to know if the methods used in the paper to encode Sudoku puzzles with polynomials to count them could be used to actually solve the puzzles themselves. It turns out that a Gröbner basis can solve them, even in a few different methods! 
 
 
