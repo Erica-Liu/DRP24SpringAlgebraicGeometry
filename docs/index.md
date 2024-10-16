@@ -16,9 +16,12 @@ possible other blues/colours we could use that might look less startling?
 <span style="color:blueviolet">blueviolate</span>
 
 ### Our Goal
+
 We wanted to investigate how we could relate Geometry and Algebra, and what that could look like computationally through the use of a Computer Algebra System. 
 
 ### The Theoretical Concepts
+
+
 <p style="text-align: center"><img align="" width="300" height="" src="https://hackmd.io/_uploads/B1LaYdUY0.jpg"> 
 
 
