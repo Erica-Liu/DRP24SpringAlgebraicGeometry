@@ -17,7 +17,7 @@ We explored how affine varieties can be used to describe a set of points modelin
 
 ### Our application: Sudoku puzzles!
 
-![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png)
+[comment]: # (![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png))
 
 While reading the paper above, we wanted to know if the methods used in the paper to encode Sudoku puzzles with polynomials to count them could be used to actually solve the puzzles themselves. It turns out that a Gröbner basis can solve them, even in a few different methods! 
 
@@ -28,11 +28,11 @@ The following provides the necessary definitions we used in this project.
 ### Polynomial
 
 A <span style="color:dodgerblue">**polynomial**</span> in $x_1, ..., x_n$ over a field $k$ is a finite linear combination of monomials: 
-\begin{align*}
+$$\begin{align*}
 f = \alpha_1 \times x^{\beta_1} + \alpha_2 \times x^{\beta_2} ...\\
 = \sum_n\alpha_n \times x^{\beta_n},\
-\alpha_n \in  k\
-\end{align*} where $\beta_i$ is a multi index of the form of an n-tuple over $\mathbb{N}$, and for $\beta_i = (a_1, a_2, ..., a_n)$, with $a_1, ..., a_n \in \mathbb{R}$, we have $x^{\beta_i} = x_1^{a_1}x_2^{a_2}...x_n^{a_n}$
+\alpha_n \in  k
+\end{align*}$$ where $\beta_i$ is a multi index of the form of an n-tuple over $\mathbb{N}$, and for $\beta_i = (a_1, a_2, ..., a_n)$, with $a_1, ..., a_n \in \mathbb{R}$, we have $x^{\beta_i} = x_1^{a_1}x_2^{a_2}...x_n^{a_n}$
 
 Polynomials are often in the form of polynomial equations, examples being:
 - quadratic polynomial $f(x) = 12 + 4x + 7x^2$ for $x$ over the field $\mathbb{R}$
