@@ -17,7 +17,7 @@ We explored how affine varieties can be used to describe a set of points modelin
 
 ### Our application: Sudoku puzzles!
 
-[comment]: # (![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png))
+![largepreview](https://hackmd.io/_uploads/S1Zpw_IK0.png)
 
 While reading the paper above, we wanted to know if the methods used in the paper to encode Sudoku puzzles with polynomials to count them could be used to actually solve the puzzles themselves. It turns out that a Gröbner basis can solve them, even in a few different methods! 
 
@@ -27,7 +27,7 @@ The following provides the necessary definitions we used in this project.
 
 ### Polynomial
 
-A <span style="color:dodgerblue">**polynomial**</span> in $x_1, ..., x_n$ over a field $k$ is a finite linear combination of monomials: 
+A **polynomial** in $x_1, ..., x_n$ over a field $k$ is a finite linear combination of monomials: 
 $$\begin{align*}
 f = \alpha_1 \times x^{\beta_1} + \alpha_2 \times x^{\beta_2} ...\\
 = \sum_n\alpha_n \times x^{\beta_n},\
