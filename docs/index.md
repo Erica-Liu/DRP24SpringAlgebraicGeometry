@@ -41,11 +41,11 @@ The following provides the necessary definitions we used in this project.
 ### Polynomial
 
 A <span style="color:blue">**polynomial**</span> in $x_1, ..., x_n$ over a field $k$ is a finite linear combination of monomials: 
-\begin{align*}
-f = \alpha_1 \times x^{\beta_1} + \alpha_2 \times x^{\beta_2} ...\\
-= \sum_n\alpha_n \times x^{\beta_n},\
-\alpha_n \in  k\
-\end{align*} where $\beta_i$ is a multi index of the form of an n-tuple over $\mathbb{N}$, and for $\beta_i = (a_1, a_2, ..., a_n)$, with $a_1, ..., a_n \in \mathbb{R}$, we have $x^{\beta_i} = x_1^{a_1}x_2^{a_2}...x_n^{a_n}$
+
+$$\begin{aligned}f = \alpha_1 \times x^{\beta_1} + \alpha_2 \times x^{\beta_2} ...\\
+= \sum_n\alpha_n \times x^{\beta_n}, \alpha_n \in  k\end{aligned}$$
+
+where $\beta_i$ is a multi index of the form of an n-tuple over $\mathbb{N}$, and for $\beta_i = (a_1, a_2, ..., a_n)$, with $a_1, ..., a_n \in \mathbb{R}$, we have $x^{\beta_i} = x_1^{a_1}x_2^{a_2}...x_n^{a_n}$
 
 Polynomials are often in the form of polynomial equations, examples being:
 - quadratic polynomial $f(x) = 12 + 4x + 7x^2$ for $x$ over the field $\mathbb{R}$
